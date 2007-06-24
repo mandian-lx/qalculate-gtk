@@ -1,33 +1,26 @@
-%define bname   qalculate
-%define name    qalculate-gtk
-%define version 0.9.6
-%define release %mkrel 1
+%define bname qalculate
 
-Name:		%{name}
 Summary:	A very versatile desktop calculator
-Version:	%{version}
-Release:	%{release}
-Source:		http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
-URL:		http://qalculate.sourceforge.net/
+Name:		qalculate-gtk
+Version:	0.9.6
+Release:	%mkrel 1
 License:	GPL
 Group:		Office
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+URL:		http://qalculate.sourceforge.net/
+Source:		http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
 BuildRequires:	libqalculate-devel >= %{version} 
 BuildRequires:	libglade2.0-devel
 BuildRequires:	gtk+2-devel
-BuildRequires:	cln-devel
-BuildRequires:	readline-devel
-BuildRequires:	ncurses-devel
-BuildRequires:	ImageMagick
-BuildRequires:	perl(XML::Parser)
+BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper
-BuildRequires:	intltool
+BuildRequires:	perl(XML::Parser)
 BuildRequires:	desktop-file-utils
 Requires(pre):	scrollkeeper
 Requires:	gnuplot
 Requires:	wget
 Obsoletes:	qalculate
 Provides:	qalculate
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Qalculate! is a modern multi-purpose desktop calculator for GNU/Linux. It is
@@ -36,16 +29,12 @@ Features include customizable functions, units, arbitrary precision, plotting,
 and a graphical interface that uses a one-line fault-tolerant expression entry 
 (although it supports optional traditional buttons). 
 This package provides the GTK frontend.
-
  
 %prep
 %setup -q 
  
 %build
-#libtoolize --copy --force 
-#aclocal-1.9
-#autoconf-2.5x
-#automake-1.9
+
 %configure2_5x
 %make
 
@@ -54,28 +43,17 @@ rm -rf %{buildroot}
 %makeinstall_std 
 
 #menu
-mkdir -p %{buildroot}{%{_miconsdir},%{_iconsdir},%{_liconsdir},%{_menudir}}
-cat > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%{name}): \
-command="%{name}" \
-icon="%{name}.png" \
-needs="x11" \
-title="Qalculate!" \
-longtitle="Versatile desktop calculator" \
-section="Office/Accessories" \
-xdg="true"
-EOF
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/{16x16,32x32,48x48}/apps
 
 #icons 
-convert -size 48x48 data/%{bname}.png %{buildroot}%{_liconsdir}/%{name}.png 
-convert -size 32x32 data/%{bname}.png %{buildroot}%{_iconsdir}/%{name}.png 
-convert -size 16x16 data/%{bname}.png %{buildroot}%{_miconsdir}/%{name}.png
+convert -size 48x48 data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png 
+convert -size 32x32 data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png 
+convert -size 16x16 data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 
 desktop-file-install --vendor="" \
 --remove-category="Application" \
 --add-category="GTK" \
 --add-category="Calculator" \
---add-category="X-MandrivaLinux-Office;Utility" \
 --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/* 
 
 ##CAE rm symlink so both gtk and kde frontend are installable
@@ -89,23 +67,21 @@ rm -rf %{buildroot}
 %post
 %{update_menus}
 %update_scrollkeeper
+%update_icon_cache hicolor
 
 %postun
 %{clean_menus}
 %clean_scrollkeeper
+%clean_icon_cache hicolor
  
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/*
 %{_datadir}/applications/*
-%dir %{_datadir}/gnome/help/%{name}
-%{_datadir}/gnome/help/%{name}/C/*
+%{_datadir}/gnome/help/%{name}
 %{_datadir}/omf/%{name}
-%{_datadir}/pixmaps/*.png
+%exclude %{_datadir}/pixmaps/*.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/glade/*.glade
-%{_menudir}/%{name}
-%{_liconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_miconsdir}/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
