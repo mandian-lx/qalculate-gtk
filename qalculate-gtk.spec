@@ -20,6 +20,7 @@ Requires:	gnuplot
 Requires:	wget
 Obsoletes:	qalculate
 Provides:	qalculate
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Qalculate! is a modern multi-purpose desktop calculator for GNU/Linux. It is
