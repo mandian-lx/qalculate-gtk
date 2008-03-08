@@ -4,10 +4,11 @@ Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
 Version:	0.9.6
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		Office
 URL:		http://qalculate.sourceforge.net/
-Source:		http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
+Patch0:		qalculate-gtk-0.9.6-cln12.patch
 BuildRequires:	libqalculate-devel >= %{version} 
 BuildRequires:	libglade2.0-devel
 BuildRequires:	gtk+2-devel
@@ -15,6 +16,10 @@ BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	desktop-file-utils
+BuildRequires:	libgnome2-devel
+#(tpg) needed by autogen.sh
+BuildRequires:	intltool
+BuildRequires:	libtool
 Requires(pre):	scrollkeeper
 Requires:	gnuplot
 Requires:	wget
@@ -32,8 +37,11 @@ This package provides the GTK frontend.
  
 %prep
 %setup -q 
- 
+%patch0 -p0
+
 %build
+#(tpg) needed for patch 0
+./autogen.sh
 
 %configure2_5x
 %make
@@ -50,11 +58,14 @@ convert -size 48x48 data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/48x48/app
 convert -size 32x32 data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png 
 convert -size 16x16 data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 
-desktop-file-install --vendor="" \
---remove-category="Application" \
---add-category="GTK" \
---add-category="Calculator" \
---dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/* 
+#(tpg) drop icon extension
+sed -i -e 's/^Icon=%{bname}.png$/Icon=%{name}/g' %{buildroot}%{_datadir}/applications/*
+
+desktop-file-install \
+	--remove-category="Application" \
+	--add-category="GTK" \
+	--add-category="Calculator" \
+	--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/* 
 
 ##CAE rm symlink so both gtk and kde frontend are installable
 rm -f %{buildroot}%{_bindir}/qalculate
