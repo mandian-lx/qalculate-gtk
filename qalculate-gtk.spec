@@ -9,6 +9,7 @@ Group:		Office
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
 Patch0:		qalculate-gtk-0.9.6-cln12.patch
+Patch1:		qalculate-gtk-0.9.6-fix-str-fmt.patch
 BuildRequires:	libqalculate-devel >= %{version} 
 BuildRequires:	libglade2.0-devel
 BuildRequires:	gtk+2-devel
@@ -38,6 +39,7 @@ This package provides the GTK frontend.
 %prep
 %setup -q 
 %patch0 -p0
+%patch1 -p0
 
 %build
 #(tpg) needed for patch 0
@@ -94,7 +96,6 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/*
 %{_datadir}/applications/*
-%{_datadir}/gnome/help/%{name}
 %{_datadir}/omf/%{name}
 %exclude %{_datadir}/pixmaps/*.png
 %dir %{_datadir}/%{name}
