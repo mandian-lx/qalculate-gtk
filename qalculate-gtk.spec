@@ -3,7 +3,7 @@
 Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
 Version:	0.9.6
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Office
 URL:		http://qalculate.sourceforge.net/
