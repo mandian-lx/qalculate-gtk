@@ -2,15 +2,14 @@
 
 Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
-Version:	0.9.6
-Release:	%mkrel 3
+Version:	0.9.7
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Office
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
-Patch0:		qalculate-gtk-0.9.6-cln12.patch
 Patch1:		qalculate-gtk-0.9.6-fix-str-fmt.patch
-BuildRequires:	libqalculate-devel >= %{version} 
+BuildRequires:	libqalculate-devel >= %{version}
 BuildRequires:	libglade2.0-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	imagemagick
@@ -18,14 +17,11 @@ BuildRequires:	scrollkeeper
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	desktop-file-utils
 BuildRequires:	libgnome2-devel
-#(tpg) needed by autogen.sh
-BuildRequires:	intltool
-BuildRequires:	libtool
 Requires(pre):	scrollkeeper
 Requires:	gnuplot
 Requires:	wget
-Obsoletes:	qalculate
-Provides:	qalculate
+Obsoletes:	qalculate < %{version}
+Provides:	qalculate = %{version}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -35,15 +31,12 @@ Features include customizable functions, units, arbitrary precision, plotting,
 and a graphical interface that uses a one-line fault-tolerant expression entry 
 (although it supports optional traditional buttons). 
 This package provides the GTK frontend.
- 
+
 %prep
-%setup -q 
-%patch0 -p0
+%setup -q
 %patch1 -p0
 
 %build
-#(tpg) needed for patch 0
-./autogen.sh
 
 %configure2_5x
 %make
