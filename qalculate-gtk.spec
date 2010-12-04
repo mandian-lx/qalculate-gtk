@@ -90,7 +90,7 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/omf/%{name}
-%exclude %{_datadir}/pixmaps/*.png
+%{_datadir}/pixmaps/*.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/glade/*.glade
 %{_iconsdir}/hicolor/*/apps/%{name}.png
