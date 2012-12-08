@@ -67,30 +67,123 @@ rm -f %{buildroot}%{_bindir}/qalculate
 
 %find_lang %{name} --with-gnome
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%update_scrollkeeper
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%clean_scrollkeeper
-%clean_icon_cache hicolor
-%endif
- 
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/*
 %{_datadir}/applications/*
-%{_datadir}/omf/%{name}
 %{_datadir}/pixmaps/*.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/glade/*.glade
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+
+
+%changelog
+* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 0.9.7-4mdv2011.0
++ Revision: 669366
+- mass rebuild
+
+* Sat Dec 04 2010 Funda Wang <fwang@mandriva.org> 0.9.7-3mdv2011.0
++ Revision: 608594
+- update file list
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - rebuild
+
+* Tue Jan 26 2010 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.7-1mdv2010.1
++ Revision: 496826
+- update to new version 0.9.7
+- drop patch0, fixed upstream
+
+* Sun Sep 27 2009 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.6-3mdv2010.0
++ Revision: 449912
+- rebuild for new cln
+
+* Sat Mar 21 2009 Funda Wang <fwang@mandriva.org> 0.9.6-2mdv2009.1
++ Revision: 359928
+- fix str fmt
+
+* Thu Jun 12 2008 Pixel <pixel@mandriva.com> 0.9.6-2mdv2009.0
++ Revision: 218429
+- rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Sat Mar 08 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.6-2mdv2008.1
++ Revision: 182217
+- bump release tag
+
+* Sat Mar 08 2008 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.6-1mdv2008.1
++ Revision: 182198
+- Patch0: fix building against latest cln-1.2
+- add missing buildrequires on libgnome2-devel
+- fix desktop file
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sun Jun 24 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.6-1mdv2008.0
++ Revision: 43700
+- drop old menu style
+- drop X-MandrivaLinux
+- fix file list
+- adjust buildrequires
+- move icons to fd.o compiliant directory
+- spec file clean
+- new version
+- use macros
+
+
+* Fri Oct 27 2006 Nicolas LÃ©cureuil <neoclust@mandriva.org> 0.9.4-3mdv2007.0
++ Revision: 73122
+- import qalculate-gtk-0.9.4-3mdv2007.1
+
+* Sat Aug 05 2006 Charles A Edwards <eslrahc@mandriva.org> 0.9.4-2mdv2007.0
+- rebuild for latest dbus
+
+* Wed Jun 28 2006 Charles A Edwards <eslrahc@mandriva.org> 0.9.4-1mdv2007.0
+- name change for spec and pkg
+- 0.9.4
+- update filelist
+- xdg
+
+* Fri Dec 02 2005 Thierry Vignaud <tvignaud@mandriva.com> 0.7.2-2mdk
+- rebuild for new cln
+- patch 0: fix compiling with g++-4
+
+* Tue Feb 01 2005 Lenny Cartier <lenny@mandrakesoft.com> 0.7.2-1mdk
+- 0.7.2
+
+* Sat Jan 22 2005 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.7.1-4mdk
+- rebuild for new readline
+
+* Thu Jan 06 2005 Frederic Crozat <fcrozat@mandrakesoft.com> 0.7.1-3mdk 
+- Rebuild with latest howl
+
+* Thu Dec 02 2004 Abel Cheung <deaddog@mandrake.org> 0.7.1-2mdk
+- Fix BuildRequires
+- Run scrollkeeper during post/postun
+
+* Mon Nov 22 2004 Lenny Cartier <lenny@mandrakesoft.com> 0.7.1-1mdk
+- 0.7.1
+
+* Wed Oct 20 2004 Lenny Cartier <lenny@mandrakesoft.com> 0.7.0-1mdk
+- 0.7.0
+
+* Thu Jul 22 2004 Lenny Cartier <lenny@mandrakesoft.com> 0.6.2-1mdk
+- 0.6.2
+
+* Sat Jul 10 2004 Austin Acton <austin@mandrake.org> 0.6.1-1mdk
+- 0.6.1
+- configure 2.5
+
+* Sat Jun 26 2004 Lenny Cartier <lenny@mandrakesoft.com> 0.6-1mdk
+- 0.6
+
+* Wed Feb 18 2004 Austin Acton <austin@mandrake.org> 0.4-1mdk
+- 0.4
+
+* Mon Oct 27 2003 Austin Acton <aacton@yorku.ca> 0.3.1-1mdk
+- 0.3.1
+
