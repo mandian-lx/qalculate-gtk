@@ -3,7 +3,7 @@
 Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
 Version:	0.9.7
-Release:	%mkrel 4
+Release:	5
 License:	GPLv2+
 Group:		Office
 URL:		http://qalculate.sourceforge.net/
@@ -22,7 +22,6 @@ Requires:	gnuplot
 Requires:	wget
 Obsoletes:	qalculate < %{version}
 Provides:	qalculate = %{version}
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Qalculate! is a modern multi-purpose desktop calculator for GNU/Linux. It is
