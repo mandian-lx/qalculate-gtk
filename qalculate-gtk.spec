@@ -9,14 +9,14 @@ Group:		Office
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
 Patch1:		qalculate-gtk-0.9.6-fix-str-fmt.patch
-BuildRequires:	libqalculate-devel >= %{version}
+BuildRequires:	pkgconfig(libqalculate) >= %{version}
 BuildRequires:	libglade2.0-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	desktop-file-utils
-BuildRequires:	libgnome2-devel
+BuildRequires:	pkgconfig(libgnome-2.0)
 Requires(pre):	scrollkeeper
 Requires:	gnuplot
 Requires:	wget
