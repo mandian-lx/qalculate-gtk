@@ -11,7 +11,7 @@ Source0:	http://prdownloads.sourceforge.net/qalculate/%{name}-%{version}.tar.bz2
 Patch1:		qalculate-gtk-0.9.6-fix-str-fmt.patch
 BuildRequires:	pkgconfig(libqalculate) >= %{version}
 BuildRequires:	libglade2.0-devel
-BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	imagemagick
 BuildRequires:	scrollkeeper
 BuildRequires:	perl(XML::Parser)
@@ -41,7 +41,6 @@ This package provides the GTK frontend.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std 
 
 #menu
@@ -67,7 +66,6 @@ rm -f %{buildroot}%{_bindir}/qalculate
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/*
 %{_datadir}/applications/*
@@ -134,7 +132,7 @@ rm -f %{buildroot}%{_bindir}/qalculate
 - use macros
 
 
-* Fri Oct 27 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.9.4-3mdv2007.0
+* Fri Oct 27 2006 Nicolas LÃ©cureuil <neoclust@mandriva.org> 0.9.4-3mdv2007.0
 + Revision: 73122
 - import qalculate-gtk-0.9.4-3mdv2007.1
 
@@ -154,7 +152,7 @@ rm -f %{buildroot}%{_bindir}/qalculate
 * Tue Feb 01 2005 Lenny Cartier <lenny@mandrakesoft.com> 0.7.2-1mdk
 - 0.7.2
 
-* Sat Jan 22 2005 Per �yvind Karlsen <peroyvind@linux-mandrake.com> 0.7.1-4mdk
+* Sat Jan 22 2005 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.7.1-4mdk
 - rebuild for new readline
 
 * Thu Jan 06 2005 Frederic Crozat <fcrozat@mandrakesoft.com> 0.7.1-3mdk 
