@@ -52,7 +52,7 @@ autoreconf -fiv
 %make
 
 %install
-%make_install
+%makeinstall_std
 
 #icons 
 for i in 16 32 64 48 64 128 256 512
@@ -71,4 +71,3 @@ desktop-file-install \
 	%{buildroot}%{_datadir}/applications/* 
 
 %find_lang %{name} --with-gnome
-
