@@ -10,6 +10,7 @@ Url:		https://qalculate.github.io/
 Source0:	https://github.com/Qalculate/%{name}/archive/v%{version}.tar.gz
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
+BuildRequires:	intltool
 BuildRequires:	rarian
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(cln)
