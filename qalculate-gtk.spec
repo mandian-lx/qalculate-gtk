@@ -2,19 +2,19 @@
 
 Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
-Version:	0.9.9
+Version:	0.9.12
 Release:	1
 License:	GPLv2+
 Group:		Office
 Url:		https://qalculate.github.io/
-Source0:	https://github.com/Qalculate/%{name}/archive/v%{version}.tar.gz
+Source0:	https://github.com/Qalculate/qalculate-gtk/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	intltool
 BuildRequires:	rarian
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(cln)
-BuildRequires:	pkgconfig(glib-2.0)
+#BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libqalculate) >= %{version}
 Requires(pre):	rarian
