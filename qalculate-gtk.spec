@@ -14,7 +14,7 @@ BuildRequires:	intltool
 BuildRequires:	rarian
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(cln)
-#BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libqalculate) >= %{version}
 Requires(pre):	rarian
