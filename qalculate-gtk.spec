@@ -2,15 +2,15 @@
 
 Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
-Version:	0.9.8
-Release:	10
+Version:	0.9.12
+Release:	1
 License:	GPLv2+
 Group:		Office
 Url:		https://qalculate.github.io/
-Source0:        https://github.com/Qalculate/%{name}/archive/v%{version}.tar.gz
-Patch0:		qalculate-gtk-0.9.8-fix-str-fmt.patch
+Source0:	https://github.com/Qalculate/qalculate-gtk/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
+BuildRequires:	intltool
 BuildRequires:	rarian
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig(cln)
@@ -44,7 +44,6 @@ This package provides the GTK+ frontend.
 
 %prep
 %setup -q
-%patch0 -p1 -b .str
 
 %build
 autoreconf -fiv
@@ -57,8 +56,8 @@ autoreconf -fiv
 #icons 
 for i in 16 32 64 48 64 128 256 512
 do
-  install -dm 755 %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps
-  convert -size ${i}x${i} data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps/%{name}.png 
+	install -dm 755 %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps
+	convert -size ${i}x${i} data/%{bname}.png %{buildroot}%{_iconsdir}/hicolor/${i}x${i}/apps/%{name}.png 
 done
 
 # desktop
@@ -71,3 +70,4 @@ desktop-file-install \
 	%{buildroot}%{_datadir}/applications/* 
 
 %find_lang %{name} --with-gnome
+
