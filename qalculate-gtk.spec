@@ -2,7 +2,7 @@
 
 Summary:	A very versatile desktop calculator
 Name:		qalculate-gtk
-Version:	0.9.12
+Version:	1.0.0
 Release:	1
 License:	GPLv2+
 Group:		Office
@@ -24,6 +24,7 @@ Requires:	wget
 %description
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is small
 and simple to use but with much power and versatility underneath
+
 Features include customizable functions, units, arbitrary precision,
 plotting, and a user-friendly interface (GTK+ and CLI).
 
@@ -69,5 +70,6 @@ desktop-file-install \
 	--dir %{buildroot}%{_datadir}/applications \
 	%{buildroot}%{_datadir}/applications/* 
 
+# locales
 %find_lang %{name} --with-gnome
 
