@@ -1,25 +1,24 @@
 %define bname qalculate
 
 Summary:	A very versatile desktop calculator
-Name:		qalculate-gtk
-Version:	1.0.0
+Name:		%{bname}-gtk
+Version:	2.0.0
 Release:	1
 License:	GPLv2+
 Group:		Office
 Url:		https://qalculate.github.io/
-Source0:	https://github.com/Qalculate/qalculate-gtk/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}a/%{name}-%{version}.tar.gz
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	intltool
 BuildRequires:	rarian
 BuildRequires:	perl(XML::Parser)
-BuildRequires:	pkgconfig(cln)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(libqalculate) >= %{version}
 Requires(pre):	rarian
 Requires:	gnuplot
-Requires:	wget
 
 %description
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is small
@@ -32,13 +31,11 @@ This package provides the GTK+ frontend.
 
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog NEWS README TODO
+%doc doc/html
 %{_bindir}/*
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*.png
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/ui
-%{_datadir}/%{name}/ui/*.ui
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 
 #----------------------------------------------------------------------------
