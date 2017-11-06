@@ -2,12 +2,12 @@
 
 Summary:	A very versatile desktop calculator
 Name:		%{bname}-gtk
-Version:	2.0.0
+Version:	2.1.0
 Release:	1
 License:	GPLv2+
 Group:		Office
 Url:		https://qalculate.github.io/
-Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}a/%{name}-%{version}.tar.gz
+Source0:	https://github.com/Qalculate/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	intltool

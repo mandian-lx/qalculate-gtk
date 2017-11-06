@@ -1,5 +1,7 @@
 removed_sources:
   qalculate-gtk-0.9.12.tar.gz: e5a0e1aa68cf77260d78becc93ab95970dca9434
   qalculate-gtk-0.9.9.tar.gz: 7ca4ad42b0a869f954f9bc1e6090ca577a0c36cf
-sources:
   qalculate-gtk-1.0.0.tar.gz: 4ad6ccadcab2744a51af78adce13dabcbf2c3efd
+  qalculate-gtk-2.0.0.tar.gz: eb4483cc71249efec211ada5aa413caba55acb9c
+sources:
+  qalculate-gtk-2.1.0.tar.gz: e19f0408d646229e232b5b5cbd2a472479ddff8f
