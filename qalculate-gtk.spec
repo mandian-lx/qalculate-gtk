@@ -2,7 +2,7 @@
 
 Summary:	A very versatile desktop calculator
 Name:		%{bname}-gtk
-Version:	2.1.0
+Version:	2.2.1
 Release:	1
 License:	GPLv2+
 Group:		Office
